@@ -3,7 +3,7 @@
 #include <sstream>
 #include <vector>
 #include <queue>
-#include <pair>
+#include <utility>
 #include <random>
 using std::list;
 using std::vector;
@@ -20,26 +20,26 @@ typedef std::pair<Vertex,Vertex> Edge;
 // }
 class UndirectedGraph {
 public:
-	UndirectedGraph(int numVertices,float density)
-	:edgelist(0)
-	{
-		this.numVertices = numVertices;
-		this.initialDensity = density;
-
+	UndirectedGraph(int numVertices=5,float density=1.0f)
+	:edgelist(0),
+	numVertices(numVertices),
+	initialDensity(density){
  		std::default_random_engine eng((std::random_device())());
  		std::uniform_real_distribution<float> edgeProbability(0, 1.0);
+ 		// edgelist = new list<Edge>();
+ 		// list<Edge> w;
  		for (int i =0; i < numVertices; i++){
-			for int j = i+1; j < numVertices; j++;{
-				if (edgeProbability() < density){
-					edgelist.prepend(new Edge(i,j));
+			for (int j = i+1; j < numVertices; j++){
+				if (edgeProbability(eng) < density){
+					edgelist.push_front(new Edge(i,j));
 				}
 			}
 		}
 	}
 	~UndirectedGraph(){
-		delete edgelist;
-		delete adjacencyList;
-		delete adjacencyMatrix;
+		// delete edgelist;
+		// delete adjacencyList;
+		// delete adjacencyMatrix;
 	};
 	std::string getStr(){
 		return getEdgeStr();
@@ -50,13 +50,13 @@ public:
 	int getNumEdges(){
 		return edgelist.size();
 	}
-	string getShortestPath();
+	std::string getShortestPath();
 	bool isConnected();
 	float getCurrentDensity();
 	float getAverageDegree();
 
 private:
-		list<Edge> edgelist;
+		std::list<Edge*> edgelist;
 		list<list<Vertex>> adjacencyList;
 		vector<vector<Vertex>> adjacencyMatrix;
 		const int numVertices;
@@ -66,14 +66,14 @@ private:
 		void alignReprWEdgelist();
 		std::string getEdgeStr(){
 		std::stringstream res;
-		for (e in edgelist){
-			res<<e.first<<"<-->"<<e.second+std::endl;
-		}
+		// for (e in edgelist){
+		// 	res<<e.first<<"<-->"<<e.second<<std::endl;
+		// }
 		return res.str();
 	}
 
-}
-ostream & operator << (ostream &out, const UndirectedGraph &c)
+};
+std::ostream & operator << (std::ostream &out, const UndirectedGraph &c)
 {
     out << c.getStr() << endl;
     return out;
