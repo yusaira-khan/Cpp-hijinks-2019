@@ -7,7 +7,7 @@
 #include <random>
 using std::list;
 using std::vector;
-namespace Djistra{
+// namespace Djistra{
 // const bool UNDIRECTED = true;
 // class Edge{
 // }
@@ -78,11 +78,10 @@ std::ostream & operator << (std::ostream &out, const UndirectedGraph &c)
     out << c.getStr() << std::endl;
     return out;
 }
-
+// }
 int main(int argc, char const *argv[]){
 	/* code */
 	auto g =  new UndirectedGraph(5,0.8);
 	std::cout << g;
 	return 0;
-}
 }

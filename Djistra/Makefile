@@ -8,6 +8,9 @@ LD=/usr/local/opt/llvm/bin/ld64.lld
 %.o: %.cpp $(DEPS)
 	$(CXX) -o $@ $< $(CPPFLAGS)
 
-short: src/Graph.o
-	$(LD) $? $(LDFLAGS) -o $@
+# short: src/Graph.o
+# 	$(LD) $? $(LDFLAGS) -o $@
 
+
+short: src/Graph.cpp
+	$(CXX) $(CPPFLAGS) $? $(LDFLAGS) -o $@
