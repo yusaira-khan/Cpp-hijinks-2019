@@ -41,7 +41,7 @@ public:
 		// delete adjacencyList;
 		// delete adjacencyMatrix;
 	};
-	std::string getStr(){
+	std::string getStr() const {
 		return getEdgeStr();
 	}
 	int getNumVertices(){
@@ -56,15 +56,15 @@ public:
 	float getAverageDegree();
 
 private:
-		std::list<Edge*> edgelist;
-		list<list<Vertex>> adjacencyList;
-		vector<vector<Vertex>> adjacencyMatrix;
-		const int numVertices;
-		const float initialDensity;
-		void alignAdjagencylist();
-		void alignMatrix();
-		void alignReprWEdgelist();
-		std::string getEdgeStr(){
+	std::list<Edge*> edgelist;
+	list<list<Vertex>> adjacencyList;
+	vector<vector<Vertex>> adjacencyMatrix;
+	const int numVertices;
+	const float initialDensity;
+	void alignAdjagencylist();
+	void alignMatrix();
+	void alignReprWEdgelist();
+	std::string getEdgeStr()const{
 		std::stringstream res;
 		// for (e in edgelist){
 		// 	res<<e.first<<"<-->"<<e.second<<std::endl;
@@ -75,7 +75,7 @@ private:
 };
 std::ostream & operator << (std::ostream &out, const UndirectedGraph &c)
 {
-    out << c.getStr() << endl;
+    out << c.getStr() << std::endl;
     return out;
 }
 
@@ -84,4 +84,5 @@ int main(int argc, char const *argv[]){
 	auto g =  new UndirectedGraph(5,0.8);
 	std::cout << g;
 	return 0;
+}
 }

@@ -1,12 +1,13 @@
 CC=/usr/local/opt/llvm/bin/clang
+CXX=/usr/local/opt/llvm/bin/clang++
 LDFLAGS="-L/usr/local/opt/llvm/lib -Wl,-rpath,/usr/local/opt/llvm/lib"
-CPPFLAGS="-I/usr/local/opt/llvm/include"
-
+CPPFLAGS="-I/usr/local/opt/llvm/include -std=c++11"
+LD=/usr/local/opt/llvm/bin/ld64.lld
 # DEPS = hellomake.h
 
-%.o: %.c $(DEPS)
-	$(CC) -c -o $@ $< $(CPPFLAGS)
+%.o: %.cpp $(DEPS)
+	$(CXX) -o $@ $< $(CPPFLAGS)
 
-short: src/Graph.cpp
-	$(CC) $(CPPFLAGS) $? $(LDFLAGS) -o $@
+short: src/Graph.o
+	$(LD) $? $(LDFLAGS) -o $@
 

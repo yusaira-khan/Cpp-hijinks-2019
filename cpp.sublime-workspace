@@ -1,0 +1,656 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"ind",
+				"include"
+			],
+			[
+				"ad",
+				"adjacencyList"
+			],
+			[
+				"edge",
+				"edgelist"
+			],
+			[
+				"de",
+				"density"
+			],
+			[
+				"e",
+				"edgelist"
+			],
+			[
+				"pri",
+				"private"
+			],
+			[
+				"ve",
+				"vector\tstd::vector"
+			],
+			[
+				"vec",
+				"vector\tstandard header"
+			],
+			[
+				"in",
+				"include"
+			],
+			[
+				"dot",
+				"dotProduct"
+			],
+			[
+				"filter",
+				"filterKLotsRight"
+			],
+			[
+				"kal",
+				"kalmanData"
+			],
+			[
+				"filt",
+				"filterK"
+			],
+			[
+				"fil",
+				"filterK"
+			],
+			[
+				"get",
+				"getR"
+			],
+			[
+				"win",
+				"window"
+			],
+			[
+				"le",
+				"length"
+			],
+			[
+				"w",
+				"windowEls"
+			],
+			[
+				"mat3",
+				"mat23\t  [[Integer]]\nMain"
+			],
+			[
+				"ro",
+				"rowsIdxEnumerated"
+			],
+			[
+				"mu",
+				"multiply"
+			],
+			[
+				"List",
+				"ListVector"
+			],
+			[
+				"Lis",
+				"ListMatrix"
+			],
+			[
+				"cu",
+				"currentMat"
+			],
+			[
+				"p",
+				"Prelude"
+			],
+			[
+				"per",
+				"perDeterminant"
+			],
+			[
+				"row",
+				"rowLen"
+			],
+			[
+				"mat",
+				"matrixRowMultiSlice"
+			],
+			[
+				"zip",
+				"zipWith3"
+			],
+			[
+				"sl",
+				"slice1"
+			],
+			[
+				"colSlic",
+				"colSliceStart"
+			],
+			[
+				"Matr",
+				"ListMatrix"
+			],
+			[
+				"col",
+				"colSliceLen"
+			],
+			[
+				"pr",
+				"putStr"
+			],
+			[
+				"co",
+				"colSliceStrideConst"
+			],
+			[
+				"lis",
+				"listSlice"
+			],
+			[
+				"list",
+				"listVectorSlice"
+			],
+			[
+				"slic",
+				"sliceStart"
+			],
+			[
+				"sli",
+				"sliceStart"
+			],
+			[
+				"sliceS",
+				"sliceStrideSoFar"
+			],
+			[
+				"mod",
+				"mod3val"
+			],
+			[
+				"ini",
+				"inits"
+			],
+			[
+				"lcm",
+				"lcmByAll"
+			],
+			[
+				"gcd",
+				"gcdList"
+			],
+			[
+				"gcdst",
+				"gcdstring"
+			],
+			[
+				"init",
+				"initA"
+			],
+			[
+				"dio",
+				"diophantineSucc"
+			],
+			[
+				"di",
+				"diophantineSeries"
+			],
+			[
+				"b",
+				"bByG"
+			],
+			[
+				"a",
+				"aByG"
+			],
+			[
+				"coe",
+				"coeffB"
+			],
+			[
+				"coeff",
+				"coeffA"
+			],
+			[
+				"S",
+				"String"
+			],
+			[
+				"div",
+				"divInfoString"
+			],
+			[
+				"ge",
+				"getA"
+			],
+			[
+				"cof",
+				"coeffB"
+			],
+			[
+				"u",
+				"undefined"
+			],
+			[
+				"un",
+				"unstackDivInfo"
+			],
+			[
+				"fib",
+				"fibscousin"
+			],
+			[
+				"ne",
+				"nextOverlappedNum"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "Djistra/Makefile",
+			"settings":
+			{
+				"buffer_size": 120,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Djistra/src/Graph.cpp",
+			"settings":
+			{
+				"buffer_size": 1811,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "Package Control Messages\n========================\n\nLSP\n---\n\n  This package provides Sublime Text support for the Language Server Protocol.\n  \n  Run \"LSP: Enable Language Server\" in the command palette to enable a configured server.\n  \n  You can further add / configure your language servers in LSP's Package Settings.\n  \n  For improved functionality, adding autocomplete triggers and keybindings is recommended.\n  \n  See https://lsp.readthedocs.io/ for documentation.\n  For issues and development updates, see https://github.com/tomv564/LSP\n  For an up-to-date list of language servers, see http://langserver.org/#implementations-server\n",
+			"settings":
+			{
+				"buffer_size": 637,
+				"line_ending": "Unix",
+				"name": "Package Control Messages",
+				"read_only": true,
+				"scratch": true
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"packa",
+				"Package Control: Upgrade Package"
+			],
+			[
+				"installed",
+				"Package Control: Install Local Dependency"
+			],
+			[
+				"lsp",
+				"Preferences: LSP Settings"
+			],
+			[
+				"sett",
+				"Preferences: LSP Settings"
+			],
+			[
+				"LSP",
+				"Preferences: LSP Settings"
+			],
+			[
+				"LD",
+				"LSP: Show Diagnostics"
+			],
+			[
+				"L",
+				"Preferences: LSP Settings"
+			],
+			[
+				"LS",
+				"LSP: Show Diagnostics"
+			],
+			[
+				"LSP ",
+				"LSP: Enable Language Server in Project"
+			],
+			[
+				"LSP Se",
+				"LSP: Setup Language Server"
+			],
+			[
+				"LSP S",
+				"Preferences: LSP Settings"
+			],
+			[
+				"LSP Sh",
+				"LSP: Show Diagnostics"
+			],
+			[
+				":W",
+				":w - Save"
+			],
+			[
+				":w",
+				":w - Save"
+			],
+			[
+				"schem",
+				"UI: Select Color Scheme"
+			],
+			[
+				"them",
+				"UI: Select Theme"
+			],
+			[
+				"pack",
+				"Package Control: Install Package"
+			],
+			[
+				"ls",
+				"LSP: Enable Language Server in Project"
+			],
+			[
+				"pre",
+				"Preferences: LSP Settings"
+			],
+			[
+				"ins",
+				"Package Control: Install Package"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"in",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 409.0,
+		"history":
+		[
+			"subprocess.check_output(\"env\")",
+			"import subprocess",
+			"subprocess.check_output(\"printenv\")",
+			"import subprocess",
+			"import urllib.request,os,hashlib; h = '6f4c264a24d933ce70df5dedcf1dcaee' + 'ebe013ee18cced0ef93d5f746d80ef60'; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( 'http://packagecontrol.io/' + pf.replace(' ', '%20')).read(); dh = hashlib.sha256(by).hexdigest(); print('Error validating download (got %s instead of %s), please try manual install' % (dh, h)) if dh != h else open(os.path.join( ipp, pf), 'wb' ).write(by)"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/Users/ykhan/Github/Cppplayground",
+		"/Users/ykhan/Github/Cppplayground/Djistra"
+	],
+	"file_history":
+	[
+		"/Users/ykhan/Github/Cppplayground/cpp.sublime-project",
+		"/Users/ykhan/Github/MatrixHaskell/src/Makefile",
+		"/Users/ykhan/Github/302/hw2-alt.ml",
+		"/Users/ykhan/Github/302/hw2.ml",
+		"/Users/ykhan/Github/302/hw1/hw1.ml",
+		"/Users/ykhan/Github/302/hw2/hw2.ml",
+		"/Users/ykhan/Github/302/hw4-sol/lock/sources.ml",
+		"/Users/ykhan/Github/302/hw4-sol/lock/key.ml",
+		"/Users/ykhan/Github/302/hw4-sol/lock/lock.ml",
+		"/Users/ykhan/Github/302/hw4-sol/streams/stream.ml",
+		"/Users/ykhan/Github/302/hw4-sol/metric/metric.ml",
+		"/Users/ykhan/Github/302/hw4-sol/streams/sources.ml",
+		"/Users/ykhan/Github/number-theory-playground-/src/SparseTernary.hs",
+		"/Users/ykhan/Github/number-theory-playground-/src/SparseBinary.hs",
+		"/Users/ykhan/Github/number-theory-playground-/src/Ops.hs",
+		"/Users/ykhan/Github/number-theory-playground-/src/PrimeDecomposition.hs",
+		"/Users/ykhan/Github/MatrixHaskell/src/ListMatrix.hs",
+		"/Users/ykhan/Github/MatrixHaskell/src/ListVector.hs",
+		"/Users/ykhan/Github/number-theory-playground-/stack.yaml",
+		"/Users/ykhan/Github/number-theory-playground-/src/Lib.hs",
+		"/Users/ykhan/Github/number-theory-playground-/number-theory-playground.cabal"
+	],
+	"find":
+	{
+		"height": 24.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"queue"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "Djistra/Makefile",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 120,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								120,
+								120
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "Djistra/src/Graph.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1811,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1535,
+								1535
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 313.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 637,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								637,
+								637
+							]
+						],
+						"settings":
+						{
+							"auto_indent": false,
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_width": 2,
+							"word_wrap": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 24.0
+	},
+	"input":
+	{
+		"height": 37.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.diagnostics":
+	{
+		"height": 108.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"output.mdpopups":
+	{
+		"height": 0.0
+	},
+	"output.unsaved_changes":
+	{
+		"height": 108.0
+	},
+	"pinned_build_system": "",
+	"project": "cpp.sublime-project",
+	"replace":
+	{
+		"height": 44.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 191.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
