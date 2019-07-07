@@ -1,5 +1,6 @@
 #include <list>
 #include <iostream>
+#include <sstream>
 #include <vector>
 #include <queue>
 #include <pair>
@@ -14,7 +15,9 @@ namespace Djistra{
 // }
 typedef int32_t Vertex;
 typedef std::pair<Vertex,Vertex> Edge;
-
+// static inline createEdge(i,j){
+// 	new
+// }
 class UndirectedGraph {
 public:
 	UndirectedGraph(int numVertices,float density)
@@ -28,8 +31,8 @@ public:
  		for (int i =0; i < numVertices; i++){
 			for int j = i+1; j < numVertices; j++;{
 				if (edgeProbability() < density){
-				edgelist.prepend(new Edge(i,j));
-			}
+					edgelist.prepend(new Edge(i,j));
+				}
 			}
 		}
 	}
@@ -38,11 +41,8 @@ public:
 		delete adjacencyList;
 		delete adjacencyMatrix;
 	};
-	string getStr(){
-		string res = "";
-		for (e in edgelist){
-			e[0]+"<-->"+e[1];
-		}
+	std::string getStr(){
+		return getEdgeStr();
 	}
 	int getNumVertices(){
 		return numVertices;
@@ -61,8 +61,16 @@ private:
 		vector<vector<Vertex>> adjacencyMatrix;
 		const int numVertices;
 		const float initialDensity;
+		void alignAdjagencylist();
+		void alignMatrix();
 		void alignReprWEdgelist();
-
+		std::string getEdgeStr(){
+		std::stringstream res;
+		for (e in edgelist){
+			res<<e.first<<"<-->"<<e.second+std::endl;
+		}
+		return res.str();
+	}
 
 }
 ostream & operator << (ostream &out, const UndirectedGraph &c)
@@ -70,4 +78,10 @@ ostream & operator << (ostream &out, const UndirectedGraph &c)
     out << c.getStr() << endl;
     return out;
 }
+
+int main(int argc, char const *argv[]){
+	/* code */
+	auto g =  new UndirectedGraph(5,0.8);
+	std::cout << g;
+	return 0;
 }
