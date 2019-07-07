@@ -38,10 +38,13 @@ public:
 	}
 	~UndirectedGraph(){
 		// delete edgelist;
+		for (auto e = edgelist.begin(); e!= edgelist.end(); e++){
+			delete(*e);
+		}
 		// delete adjacencyList;
 		// delete adjacencyMatrix;
 	};
-	std::string getStr() const {
+	inline std::stringstream getStr() const {
 		return getEdgeStr();
 	}
 	int getNumVertices(){
@@ -69,26 +72,26 @@ private:
 	void alignAdjagencylist();
 	void alignMatrix();
 	void alignReprWEdgelist();
-	std::string getEdgeStr()const{
+	inline std::stringstream getEdgeStr()const{
 		std::stringstream res;
 		for (auto e = edgelist.begin(); e!= edgelist.end(); e++){
 			res<<(*e)->first<<"<-->"<<(*e)->second<<std::endl;
 		}
-		return res.str();
+		return res;
 	}
 
 };
 std::ostream & operator << (std::ostream &out, const UndirectedGraph &c)
 {
-
-    out << c.getStr() << std::endl;
+    out << c.getStr().str() << std::endl;
     return out;
 }
 // }
 int main(int argc, char const *argv[]){
 	/* code */
-	auto g =  new UndirectedGraph(5,0.8);
-	// std::cout << g;
-	g->print();
+	UndirectedGraph g(5,0.8);
+	std::cout << g;
+	// delete &g;
+	// g->print();
 	return 0;
 }
