@@ -54,7 +54,12 @@ public:
 	bool isConnected();
 	float getCurrentDensity();
 	float getAverageDegree();
+	void print(){
 
+		for (auto e = edgelist.begin(); e!= edgelist.end(); e++){
+			std::cout<<(*e)->first<<"<-->"<<(*e)->second<<std::endl;
+		}
+	}
 private:
 	std::list<Edge*> edgelist;
 	list<list<Vertex>> adjacencyList;
@@ -66,15 +71,16 @@ private:
 	void alignReprWEdgelist();
 	std::string getEdgeStr()const{
 		std::stringstream res;
-		// for (e in edgelist){
-		// 	res<<e.first<<"<-->"<<e.second<<std::endl;
-		// }
+		for (auto e = edgelist.begin(); e!= edgelist.end(); e++){
+			res<<(*e)->first<<"<-->"<<(*e)->second<<std::endl;
+		}
 		return res.str();
 	}
 
 };
 std::ostream & operator << (std::ostream &out, const UndirectedGraph &c)
 {
+
     out << c.getStr() << std::endl;
     return out;
 }
@@ -82,6 +88,7 @@ std::ostream & operator << (std::ostream &out, const UndirectedGraph &c)
 int main(int argc, char const *argv[]){
 	/* code */
 	auto g =  new UndirectedGraph(5,0.8);
-	std::cout << g;
+	// std::cout << g;
+	g->print();
 	return 0;
 }
