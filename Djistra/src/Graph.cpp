@@ -5,6 +5,7 @@
 #include <queue>
 #include <utility>
 #include <random>
+#include <memory>
 using std::list;
 using std::vector;
 // namespace Djistra{
@@ -31,20 +32,20 @@ public:
  		for (int i =0; i < numVertices; i++){
 			for (int j = i+1; j < numVertices; j++){
 				if (edgeProbability(eng) < density){
-					edgelist.push_front(new Edge(i,j));
+					edgelist.push_front(std::unique_ptr<Edge>(new Edge(i,j)));
 				}
 			}
 		}
 	}
 	~UndirectedGraph(){
 		// delete edgelist;
-		for (auto e = edgelist.begin(); e!= edgelist.end(); e++){
-			delete(*e);
-		}
+		// for (auto e = edgelist.begin(); e!= edgelist.end(); e++){
+		// 	delete(*e);
+		// }
 		// delete adjacencyList;
 		// delete adjacencyMatrix;
 	};
-	inline std::stringstream getStr() const {
+	inline std::string getStr() const {
 		return getEdgeStr();
 	}
 	int getNumVertices(){
@@ -57,40 +58,36 @@ public:
 	bool isConnected();
 	float getCurrentDensity();
 	float getAverageDegree();
-	void print(){
-
-		for (auto e = edgelist.begin(); e!= edgelist.end(); e++){
-			std::cout<<(*e)->first<<"<-->"<<(*e)->second<<std::endl;
-		}
-	}
 private:
-	std::list<Edge*> edgelist;
+	std::list<std::unique_ptr<Edge>> edgelist;
 	list<list<Vertex>> adjacencyList;
 	vector<vector<Vertex>> adjacencyMatrix;
 	const int numVertices;
 	const float initialDensity;
-	void alignAdjagencylist();
+	void alignAdjagencylist(){
+
+	}
 	void alignMatrix();
 	void alignReprWEdgelist();
-	inline std::stringstream getEdgeStr()const{
+	inline std::string getEdgeStr()const{
 		std::stringstream res;
 		for (auto e = edgelist.begin(); e!= edgelist.end(); e++){
 			res<<(*e)->first<<"<-->"<<(*e)->second<<std::endl;
 		}
-		return res;
+		return res.str();
 	}
 
 };
-std::ostream & operator << (std::ostream &out, const UndirectedGraph &c)
-{
-    out << c.getStr().str() << std::endl;
+std::ostream & operator << (std::ostream &out, const UndirectedGraph &c){
+    out << c.getStr() << std::endl;
     return out;
 }
 // }
 int main(int argc, char const *argv[]){
 	/* code */
-	UndirectedGraph g(5,0.8);
-	std::cout << g;
+	auto g = new UndirectedGraph (5,0.8);
+	std::cout << g << std::endl;
+	std::cout << *g;
 	// delete &g;
 	// g->print();
 	return 0;
