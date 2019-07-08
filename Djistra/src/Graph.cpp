@@ -5,6 +5,7 @@
 #include <queue>
 #include <utility>
 #include <random>
+#include <map>
 #include <memory>
 using std::list;
 using std::vector;
@@ -60,12 +61,23 @@ public:
 	float getAverageDegree();
 private:
 	std::list<std::unique_ptr<Edge>> edgelist;
-	list<list<Vertex>> adjacencyList;
+	std::map<Vertex,list<Vertex>> adjacencyList;
 	vector<vector<Vertex>> adjacencyMatrix;
 	const int numVertices;
 	const float initialDensity;
+	void addToList(const Vertex find, const Vertex add){
+		auto find_it = adjacencyList.find(find);
+		if (find_it != adjacencyList.end()){
+			find_it->second.push_front(add);
+		}
+	}
 	void alignAdjagencylist(){
-
+		for (auto e = edgelist.begin(); e!= edgelist.end(); e++){
+			auto b = (*e)->second;
+			auto a = (*e)->first;
+			addToList(a, b);
+			addToList(b, a);
+		}
 	}
 	void alignMatrix();
 	void alignReprWEdgelist();
