@@ -64,14 +64,17 @@ public:
 		std::set<Vertex> closed;
 		while(!open.empty()){
 			Vertex current = open.front();
-			open.pop();
+			// std::cout<<"curr:"<<current<<" open size:"<<open.size()<<std::endl;
 
 			for (auto v = adjacencyList[current].begin();
 				v!=adjacencyList[current].end();
 				v++){
-
-				closed.insert(*v);
+				if (closed.find(*v)==closed.end()){//not in closed set
+					open.push(*v);
+				}
 			}
+			open.pop();
+			closed.insert(current);
 		}
 		return closed.size() == this->numVertices;
 		// std::for_each(adjacencyList[src].begin(), adjacencyList[src].end(),
