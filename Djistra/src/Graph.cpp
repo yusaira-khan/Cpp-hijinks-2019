@@ -57,15 +57,41 @@ public:
 	int getNumEdges(){
 		return edgelist.size();
 	}
-	std::string getShortestPath();
+	UndirectedGraph getShortestPath(Vertex src, Vertex dst){
+		std::queue<Vertex> open({src});
+		std::set<Vertex> closed;
+		UndirectedGraph shortest;
+		//todo: add adding arbitrary edges and vertices to graph
+		//todo: let changing weights of edges
+		while(!open.empty()){
+			Vertex current = open.front();
+			if (current == dst){
+				//todo: done
+			}
+			for (auto v = adjacencyList[current].begin();
+				v!=adjacencyList[current].end();
+				v++){
+				//update edges
+
+				//don't know if neeeded
+				if (closed.find(*v)==closed.end()){//not in closed set
+					open.push(*v);
+				}
+			}
+			open.pop();
+			closed.insert(current);
+		}
+		return closed.size() == this->numVertices;
+		// std::for_each(adjacencyList[src].begin(), adjacencyList[src].end(),
+		// 	[open](Vertex n){ open.push(n)});
+	}
 	bool isConnected(){
 		const Vertex src = 0;
 		std::queue<Vertex> open({src});
 		std::set<Vertex> closed;
+		//breath first search
 		while(!open.empty()){
 			Vertex current = open.front();
-			// std::cout<<"curr:"<<current<<" open size:"<<open.size()<<std::endl;
-
 			for (auto v = adjacencyList[current].begin();
 				v!=adjacencyList[current].end();
 				v++){
