@@ -26,17 +26,18 @@ public:
 	:edgelist(0),
 	numVertices(numVertices),
 	initialDensity(density){
- 		std::default_random_engine eng((std::random_device())());
- 		std::uniform_real_distribution<float> edgeProbability(0, 1.0);
- 		// edgelist = new list<Edge>();
- 		// list<Edge> w;
- 		for (int i =0; i < numVertices; i++){
-			for (int j = i+1; j < numVertices; j++){
-				if (edgeProbability(eng) < density){
-					edgelist.push_front(std::unique_ptr<Edge>(new Edge(i,j)));
-				}
+	std::default_random_engine eng((std::random_device())());
+	std::uniform_real_distribution<float> edgeProbability(0, 1.0);
+
+	//create random edges
+	for (int i =0; i < numVertices; i++){
+		for (int j = i+1; j < numVertices; j++){
+			if (edgeProbability(eng) < density){
+				edgelist.push_front(std::unique_ptr<Edge>(new Edge(i,j)));
 			}
 		}
+	}
+	alignReprWEdgelist();
 	}
 	~UndirectedGraph(){
 		// delete edgelist;
@@ -47,7 +48,7 @@ public:
 		// delete adjacencyMatrix;
 	};
 	inline std::string getStr() const {
-		return getEdgeStr();
+		return getEdgeStr().str()+getAdjListStr().str();
 	}
 	int getNumVertices(){
 		return numVertices;
@@ -69,26 +70,42 @@ private:
 		auto find_it = adjacencyList.find(find);
 		if (find_it != adjacencyList.end()){
 			find_it->second.push_front(add);
+		}else{
+			adjacencyList[find]=list<Vertex>({add});
 		}
 	}
 	void alignAdjagencylist(){
 		for (auto e = edgelist.begin(); e!= edgelist.end(); e++){
 			auto b = (*e)->second;
 			auto a = (*e)->first;
+			// std::cout<<"adding edge"<<a<<b;
+
 			addToList(a, b);
 			addToList(b, a);
 		}
 	}
 	void alignMatrix();
-	void alignReprWEdgelist();
-	inline std::string getEdgeStr()const{
+	void alignReprWEdgelist(){
+		alignAdjagencylist();
+	}
+	inline std::stringstream getEdgeStr()const {
 		std::stringstream res;
 		for (auto e = edgelist.begin(); e!= edgelist.end(); e++){
 			res<<(*e)->first<<"<-->"<<(*e)->second<<std::endl;
 		}
-		return res.str();
+		return res;
 	}
-
+	inline std::stringstream getAdjListStr()const {
+		std::stringstream res;
+		for (auto v = adjacencyList.begin(); v!= adjacencyList.end(); v++){
+			res<<v->first<<":";
+			for (auto e = v->second.begin(); e!= v->second.end(); e++){
+				res <<*e<<",";
+			}
+			res<<std::endl;
+		}
+		return res;
+	}
 };
 std::ostream & operator << (std::ostream &out, const UndirectedGraph &c){
     out << c.getStr() << std::endl;
