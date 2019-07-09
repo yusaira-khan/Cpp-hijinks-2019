@@ -22,6 +22,12 @@ typedef std::pair<Vertex,Vertex> Edge;
 // 	new
 // }
 class UndirectedGraph {
+	//todo: change vertex and edges to classes
+	//todo: add all the missing api required in question
+	//todo: finish djikstra
+	//todo: change raw objects to ptrs
+	//todo: change ptrs to unique ptrs
+	//todo: make forloops less redundant. foreach perhaps?
 public:
 	UndirectedGraph(int numVertices=5,float density=1.0f)
 	:edgelist(0),
