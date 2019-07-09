@@ -7,6 +7,7 @@
 #include <random>
 #include <map>
 #include <memory>
+#include <set>
 using std::list;
 using std::vector;
 // namespace Djistra{
@@ -57,7 +58,26 @@ public:
 		return edgelist.size();
 	}
 	std::string getShortestPath();
-	bool isConnected();
+	bool isConnected(){
+		const Vertex src = 0;
+		std::queue<Vertex> open({src});
+		std::set<Vertex> closed;
+		while(!open.empty()){
+			Vertex current = open.front();
+			open.pop();
+
+			for (auto v = adjacencyList[current].begin();
+				v!=adjacencyList[current].end();
+				v++){
+
+				closed.insert(*v);
+			}
+		}
+		return closed.size() == this->numVertices;
+		// std::for_each(adjacencyList[src].begin(), adjacencyList[src].end(),
+		// 	[open](Vertex n){ open.push(n)});
+
+	}
 	float getCurrentDensity();
 	float getAverageDegree();
 private:
@@ -117,6 +137,7 @@ int main(int argc, char const *argv[]){
 	auto g = new UndirectedGraph (5,0.8);
 	std::cout << g << std::endl;
 	std::cout << *g;
+	std::cout << g->isConnected();
 	// delete &g;
 	// g->print();
 	return 0;
