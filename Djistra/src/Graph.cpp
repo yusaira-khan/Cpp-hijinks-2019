@@ -27,6 +27,14 @@ bool operator==(Vertex& a, Vertex& b){
 bool operator==(Vertex& a, int& b){
 	return a.name == b;
 }
+struct vtxcmp : public std::binary_function<Vertex, Vertex, bool>{
+    bool operator()(const Vertex& a, const Vertex& b) const {
+        return a.name < b.name;
+    }
+};
+std::ostream & operator << (std::ostream &out, const Vertex &c){
+	return out<<c.name;
+}
 class Edge{
 public:
 	const Vertex first;
@@ -35,6 +43,9 @@ public:
 	Edge(Vertex &first,Vertex& second):
 	first(first),second(second),weight(0){}
 };
+std::ostream & operator << (std::ostream &res, const Edge &e){
+return res<<e.first<<"<-"<<e.weight<<"->"<<e.second;
+}
 // typedef int32_t Vertex;
 // typedef std::pair<Vertex,Vertex> Edge;
 // static inline createEdge(i,j){
@@ -50,15 +61,16 @@ class UndirectedGraph {
 	//todo: change raw objects to ptrs
 	//todo: change ptrs to unique ptrs
 	//todo: make forloops less redundant. foreach perhaps?
+	//todo:TDD
+	//todo: add vtx to adj list even if disconnected
 public:
 	UndirectedGraph(int numVertices=5,float density=1.0f)
-	:edgelist(0),
+	:
 	numVertices(numVertices),
-	vertexList(numVertices),
 	initialDensity(density){
 	std::default_random_engine eng((std::random_device())());
 	std::uniform_real_distribution<float> edgeProbability(0, 1.0);
-
+	vertexList.reserve(numVertices);
 	//create random edges
 	for (int i =0; i < numVertices; i++){
 		vertexList.push_back(Vertex(i));
@@ -66,7 +78,7 @@ public:
 	for (int i =0; i < numVertices; i++){
 		for (int j = i+1; j < numVertices; j++){
 			if (edgeProbability(eng) < density){
-				edgelist.push_front(std::unique_ptr<Edge>(new Edge(vertexList[i],vertexList[j])));
+				edgelist.push_front(Edge(vertexList[i],vertexList[j]));
 			}
 		}
 	}
@@ -91,7 +103,7 @@ public:
 	}
 	UndirectedGraph getShortestPath(Vertex src, Vertex dst){
 		std::queue<Vertex> open({src});
-		std::set<Vertex> closed;
+		std::set<Vertex,vtxcmp> closed;
 		UndirectedGraph shortest;
 		//todo: add adding arbitrary edges and vertices to graph
 		//todo: let changing weights of edges
@@ -120,7 +132,7 @@ public:
 	bool isConnected(){
 		const Vertex src = 0;
 		std::queue<Vertex> open({src});
-		std::set<Vertex> closed;
+		std::set<Vertex,vtxcmp> closed;
 		//breath first search
 		while(!open.empty()){
 			Vertex current = open.front();
@@ -142,11 +154,11 @@ public:
 	float getCurrentDensity();
 	float getAverageDegree();
 private:
-	std::list<std::unique_ptr<Edge>> edgelist;
-	std::map<Vertex,list<Vertex>> adjacencyList;
+	std::list<Edge> edgelist;
+	std::map<Vertex,list<Vertex>,vtxcmp> adjacencyList;
 	vector<vector<Vertex>> adjacencyMatrix;
 	const int numVertices;
-	std::vector<Vertex>vertexList;
+	std::vector<Vertex> vertexList;
 	const float initialDensity;
 	void addToList(const Vertex find, const Vertex add){
 		auto find_it = adjacencyList.find(find);
@@ -158,8 +170,8 @@ private:
 	}
 	void alignAdjagencylist(){
 		for (auto e = edgelist.begin(); e!= edgelist.end(); e++){
-			auto b = (*e)->second;
-			auto a = (*e)->first;
+			auto b = (e)->second;
+			auto a = (e)->first;
 			// std::cout<<"adding edge"<<a<<b;
 
 			addToList(a, b);
@@ -173,7 +185,7 @@ private:
 	inline std::stringstream getEdgeStr()const {
 		std::stringstream res;
 		for (auto e = edgelist.begin(); e!= edgelist.end(); e++){
-			res<<(*e)->first<<"<-->"<<(*e)->second<<std::endl;
+			res<<*e<<std::endl;
 		}
 		return res;
 	}
