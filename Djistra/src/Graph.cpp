@@ -12,15 +12,37 @@ using std::list;
 using std::vector;
 // namespace Djistra{
 // const bool UNDIRECTED = true;
-// class Edge{
-// }
-// class Vertex{
-// }
-typedef int32_t Vertex;
-typedef std::pair<Vertex,Vertex> Edge;
+
+class Vertex{
+public:
+	int name;
+	int weight;
+	Vertex(int name):name(name),weight(0){
+	}
+
+};
+bool operator==(Vertex& a, Vertex& b){
+	return a.name == b.name;
+}
+bool operator==(Vertex& a, int& b){
+	return a.name == b;
+}
+class Edge{
+public:
+	const Vertex first;
+	const Vertex second;
+	int weight;
+	Edge(Vertex &first,Vertex& second):
+	first(first),second(second),weight(0){}
+};
+// typedef int32_t Vertex;
+// typedef std::pair<Vertex,Vertex> Edge;
 // static inline createEdge(i,j){
 // 	new
 // }
+class ShortestPath{
+
+};
 class UndirectedGraph {
 	//todo: change vertex and edges to classes
 	//todo: add all the missing api required in question
@@ -32,15 +54,19 @@ public:
 	UndirectedGraph(int numVertices=5,float density=1.0f)
 	:edgelist(0),
 	numVertices(numVertices),
+	vertexList(numVertices),
 	initialDensity(density){
 	std::default_random_engine eng((std::random_device())());
 	std::uniform_real_distribution<float> edgeProbability(0, 1.0);
 
 	//create random edges
 	for (int i =0; i < numVertices; i++){
+		vertexList.push_back(Vertex(i));
+	}
+	for (int i =0; i < numVertices; i++){
 		for (int j = i+1; j < numVertices; j++){
 			if (edgeProbability(eng) < density){
-				edgelist.push_front(std::unique_ptr<Edge>(new Edge(i,j)));
+				edgelist.push_front(std::unique_ptr<Edge>(new Edge(vertexList[i],vertexList[j])));
 			}
 		}
 	}
@@ -57,10 +83,10 @@ public:
 	inline std::string getStr() const {
 		return getEdgeStr().str()+getAdjListStr().str();
 	}
-	int getNumVertices(){
-		return numVertices;
+	int V(){
+		return vertexList.size();
 	};
-	int getNumEdges(){
+	int E(){
 		return edgelist.size();
 	}
 	UndirectedGraph getShortestPath(Vertex src, Vertex dst){
@@ -120,6 +146,7 @@ private:
 	std::map<Vertex,list<Vertex>> adjacencyList;
 	vector<vector<Vertex>> adjacencyMatrix;
 	const int numVertices;
+	std::vector<Vertex>vertexList;
 	const float initialDensity;
 	void addToList(const Vertex find, const Vertex add){
 		auto find_it = adjacencyList.find(find);
