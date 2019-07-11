@@ -21,10 +21,10 @@ public:
 	}
 
 };
-bool operator==(Vertex& a, Vertex& b){
+bool operator==(const Vertex& a, const Vertex& b){
 	return a.name == b.name;
 }
-bool operator==(Vertex& a, int& b){
+bool operator==(const Vertex& a, int& b){
 	return a.name == b;
 }
 struct vtxcmp : public std::binary_function<Vertex, Vertex, bool>{
@@ -101,25 +101,18 @@ public:
 	int E(){
 		return edgelist.size();
 	}
-	getNodeValue(int vertex_name){
+	int getNodeValue(int vertex_name){
 		return findVertex(vertex_name).weight;
-		//todo handle null
 	}
-	setNodeValue(int vertex_name,int value){
-		return findVertex(vertex_name).weight = value;
-				//todo handle null
-
+	void setNodeValue(int vertex_name,int value){
+	 	findVertex(vertex_name).weight = value;
 	}
 
-	getEdgeValue(int start_vertex, int end_vertex){
+	int getEdgeValue(int start_vertex, int end_vertex){
 		return findEdge(start_vertex,end_vertex).weight;
-				//todo handle null
-
 	}
-	setEdgeValue(int vertex_name,int value){
-		return findEdge(start_vertex,end_vertex).weight=value;
-				//todo handle null
-
+	void setEdgeValue(int start_vertex, int end_vertex,int value){
+		findEdge(start_vertex,end_vertex).weight=value;
 	}
 	UndirectedGraph getShortestPath(Vertex src, Vertex dst){
 		std::queue<Vertex> open({src});
@@ -226,20 +219,20 @@ private:
 		}
 		return findEdge(findVertex(start),findVertex(end));
 	}
-	Edge& findEdge(Vertex& start, Vertex& end){
+	Edge& findEdge(const Vertex& start,const Vertex& end){
 		for (auto e = edgelist.begin(); e!= edgelist.end(); e++){
 			if (e->first == start && e->second == end){
 				return *e;
 			}
 		}
-		return nullptr;
+		throw "edge not found";
 	}
 	Vertex& findVertex(int name){
 		if (name>=0 && name< vertexList.size()){
 			return vertexList[name];
 		}
-		// throw "vertex not found!";
-		return nullptr;
+		throw "vertex not found!";
+
 	}
 };
 std::ostream & operator << (std::ostream &out, const UndirectedGraph &c){
