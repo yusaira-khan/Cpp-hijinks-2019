@@ -51,8 +51,21 @@ return res<<e.first<<"<-"<<e.weight<<"->"<<e.second;
 // static inline createEdge(i,j){
 // 	new
 // }
-class ShortestPath{
 
+
+class PriorityQueue{
+public:
+	PriorityQueue();
+	void chgPrioirity();
+	edge minPrioirty();
+	bool contains(Edge );
+	void insert(Edge e){all.insert(e)};
+	Edge top();
+	int size(){all.size()};
+	bool empty();
+private:
+	std::set<Edge> all;
+	// std::priority_queue;
 };
 class UndirectedGraph {
 	//todo: change vertex and edges to classes
@@ -125,29 +138,7 @@ public:
 	}
 	UndirectedGraph getShortestPath(Vertex src, Vertex dst){
 		std::queue<Vertex> open({src});
-		std::set<Vertex,vtxcmp> closed;
-		UndirectedGraph shortest;
-		//todo: add adding arbitrary edges and vertices to graph
-		//todo: let changing weights of edges
-		while(!open.empty()){
-			Vertex current = open.front();
-			if (current == dst){
-				//todo: done
-			}
-			for (auto v = adjacencyList[current].begin();
-				v!=adjacencyList[current].end();
-				v++){
-				//update edges
 
-				//don't know if neeeded
-				if (closed.find(*v)==closed.end()){//not in closed set
-					open.push(*v);
-				}
-			}
-			open.pop();
-			closed.insert(current);
-		}
-		return closed.size() == this->numVertices;
 		// std::for_each(adjacencyList[src].begin(), adjacencyList[src].end(),
 		// 	[open](Vertex n){ open.push(n)});
 	}
@@ -252,6 +243,58 @@ std::ostream & operator << (std::ostream &out, const UndirectedGraph &c){
     return out;
 }
 // }
+
+
+class ShortestPath{
+public:
+	ShortestPath();
+	int vertices(){
+		max = G.V();
+	}
+	std::vector<Vertex>  path(int start, int end){
+		//djikstra
+		//unseen
+		PriorityQueue open;
+		std::set<Vertex,vtxcmp> closed;
+		UndirectedGraph shortest;
+		std::vector<Vertex>  p;
+		//todo: add adding arbitrary edges and vertices to graph
+		//todo: let changing weights of edges
+
+		while(!open.empty()){
+			Vertex current = open.top();
+			if (current == dst){
+				//todo: done
+				return p;
+
+			}
+			//stopped looking here
+			//use get_edge_value
+			//use adjacaent thing
+			//use neighbours thing
+			for (auto v = adjacencyList[current].begin();
+				v!=adjacencyList[current].end();
+				v++){
+				//update edges
+
+				//don't know if neeeded
+				if (closed.find(*v)==closed.end()){//not in closed set
+					open.push(*v);
+				}
+			}
+			open.pop();
+			closed.insert(current);
+		}
+		return closed.size() == this->numVertices;
+	}
+	int pathSize(int start, int end){
+		return path(start,end).size();
+	}
+private:
+	PriorityQueue PQ;
+	UndirectedGraph G;
+};
+
 int main(int argc, char const *argv[]){
 	/* code */
 	auto g = new UndirectedGraph (5,0.8);
