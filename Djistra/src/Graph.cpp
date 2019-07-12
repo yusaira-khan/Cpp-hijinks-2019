@@ -102,7 +102,7 @@ public:
 		return edgelist.size();
 	}
 	int getNodeValue(int vertex_name){
-		return findVertex(vertex_name).weight;
+		return Vertex(vertex_name).weight;
 	}
 	void setNodeValue(int vertex_name,int value){
 	 	findVertex(vertex_name).weight = value;
@@ -113,6 +113,15 @@ public:
 	}
 	void setEdgeValue(int start_vertex, int end_vertex,int value){
 		findEdge(start_vertex,end_vertex).weight=value;
+	}
+	bool adjacent(int start_vertex,int end_vertex){
+		auto s = findVertex(start_vertex);
+		auto e = findVertex(end_vertex);
+		return adjacencyList[s].find(e) != adjacencyList[s].end();
+	}
+	std::vector<Vertex>  neighbors(int start_vertex){
+		auto s = findVertex(start_vertex);
+		return std::vector<Vertex>(adjacencyList[s].begin(),adjacencyList[s].end());
 	}
 	UndirectedGraph getShortestPath(Vertex src, Vertex dst){
 		std::queue<Vertex> open({src});
@@ -168,17 +177,20 @@ public:
 	float getAverageDegree();
 private:
 	std::list<Edge> edgelist;
-	std::map<Vertex,list<Vertex>,vtxcmp> adjacencyList;
+	std::map<Vertex,std::set<Vertex,vtxcmp>,vtxcmp> adjacencyList;
 	vector<vector<Vertex>> adjacencyMatrix;
 	const int numVertices;
 	std::vector<Vertex> vertexList;
 	const float initialDensity;
+
+
 	void addToList(const Vertex find, const Vertex add){
 		auto find_it = adjacencyList.find(find);
 		if (find_it != adjacencyList.end()){
-			find_it->second.push_front(add);
+			find_it->second.insert(add);
 		}else{
-			adjacencyList[find]=list<Vertex>({add});
+			adjacencyList[find]=std::set<Vertex,vtxcmp>();
+			adjacencyList[find].insert(add);
 		}
 	}
 	void alignAdjagencylist(){
